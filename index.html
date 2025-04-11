@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prateek Pathak - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="claude_updated_style_2.css">
+</head>
+<body>
+    <!-- [Previous HTML content remains the same until before closing body tag] -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo"><img  src="logo_2.png" width="80"></a>
+            
+            <button class="hamburger" aria-label="Toggle Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <ul class="nav-menu">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('skills')">Skills</a></li>
+                <li><a href="#" onclick="showPage('projects')">Projects</a></li>
+                <!-- <li><a href="#" onclick="showPage('contact')">Contact</a></li> -->
+            </ul>
+        </nav>
+    </header>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const header = document.querySelector('.header');
+
+        hamburger.addEventListener('click', toggleMenu);
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            header.classList.toggle('menu-active');
+            
+            // Toggle aria-expanded for accessibility
+            const isExpanded = hamburger.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', isExpanded);
+        }
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-menu li a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                header.classList.remove('menu-active');
+                hamburger.setAttribute('aria-expanded', false);
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                header.classList.remove('menu-active');
+                hamburger.setAttribute('aria-expanded', false);
+            }
+        });
+
+        // Prevent menu from closing when clicking inside
+        navMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    </script>
+
+    <div id="home" class="page active">
+        <div class="hero-content">
+            <h1 style="text-align:left;margin-top:100px">Hello, I'm <br><div style="margin-top: 0px">Prateek Pathak</div></h1>
+            <div>
+                <p style="text-align: justify;">I'm a <b style="color:#ff5763">Data Scientist</b> at Jio with over a year of experience in Generative AI and Machine Learning, building scalable AI-driven solutions. I’m passionate about solving complex problems, optimizing AI workflows, and exploring the latest advancements in the field.
+                My expertise includes Python, Gen-AI, Machine Learning, SQL databases, and more, with a strong focus on RAG</p>
+            </div>
+            
+            <div class="social-links">
+                <a href="mailto:prateekp1453@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/pathak-prateek/"><i class="fab fa-linkedin"></i></a>
+                <a href="tel:+918080654408"><i class="fas fa-phone"></i></a>
+                <a href="https://github.com/prateek670/"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="page">
+        <div class="about-grid">
+            <div class="about-content">
+                <h2 style="color:#ff5763">About Me</h2>
+                <p style="text-align: justify;">I am Prateek Pathak, a Data Scientist at Jio Platforms Limited, with hands-on experience in building AI solutions, large language model (LLM) applications, and AI security tools. With a Bachelor's degree in Computer Engineering and a solid foundation in machine learning, deep learning, and scalable data pipelines, I specialize in developing Retrieval-Augmented Generation (RAG) chatbots, PDF parsing pipelines, and adversarial prompt security suites.</p>
+                <p style="text-align: justify;">My work focuses on both AI performance and security, including fine-tuning models like Mistral, building intelligent query routing systems, and developing security-focused PII test suites. I have also optimized ML workflows with Airflow and MLflow, ensuring seamless experimentation and deployment in production environments.</p>
+                <p style="text-align: justify;">I enjoy building solutions that solve real-world problems — from customer churn prediction to HR automation using recommendation systems. With every project, I aim to combine cutting-edge research with practical engineering to create scalable, impactful systems.</p>
+                <p style="text-align: justify;">Outside of work, I love exploring Stock Market, Technical Assignment, and geeking out over astronomy. Let's connect to collaborate on AI innovations or just to share ideas over a good conversation!</p>
+            </div>
+        </div>
+        <br><br>
+        <section class="history-container">
+    
+
+            <!-- Timeline -->
+            <div class="history">
+              <div class="history-line"></div>
+              <div class="history-item highlight" data-slide="0">
+                <div class="history-title">Data Scientist @ Jio Platforms ltd. </div>
+              </div>
+              <!-- <div class="history-item" data-slide="1">
+                <div class="history-title">Web Developer Intern</div>
+              </div> -->
+              <div class="history-item" data-slide="2">
+                <div class="history-title">Education </div>
+              </div>
+            </div>
+        
+            <!-- Content Section -->
+            <div class="details-section">
+              <div class="details highlight-content">
+                <h2>Data Scientist (Dec 2023-present)</h2>
+                <ul>
+                    <li><strong>Developed RAG-based Chatbot</strong> – Developed a Retrieval-Augmented Generation (RAG) chatbot for the Security team using Llama 3.3 70b as an on-prem LLM, implementing semantic caching and reducing LLM calls by 25%.</li>
+                    <li><strong>Developed Safe AI Platform</strong> – Reduced LLM security vulnerabilities by 30%, enhancing system reliability and security.</li>
+                    <li><strong>Built Prompt Injection Detection Suite</strong> – Created a fine-tuned model that outperformed existing tools, generating 10K+ adversarial prompts and identifying 25% more vulnerabilities.</li>
+                    <li><strong>Designed PII Identification Suite</strong> – Achieved 100% test case validation, ensuring data privacy compliance and reducing regulatory risks.</li>
+                    <li><strong>Engineered a Recommendation System</strong> – Increased automation efficiency by 40%, improving relevance and user experience.</li>
+                    <li><strong>Devoloped a Semantic Prompt Router</strong> – Implemented an intelligent query routing mechanism, enhancing chatbot performance by cutting response times by 4-5 seconds and improving resolution accuracy by 40%. This upgrade allowed the team to handle 30% higher query volumes, enhance user satisfaction</li>
+                    <li><strong>Developed a RAG-based HR chatbot</strong> – Streamlined HR query resolution with a RAG pipeline by integrating Redis as a vector database and adding a two tower recommendation engine and real-time autocomplete features, reducing monthly query volume by 30%.</li>
+                    <li><strong>Created Social Media Summarizer</strong> – Delivered sentiment-based insights for strategic decision-making and market positioning.</li>
+                </ul>
+                
+              </div>
+              <!-- <div class="details">
+                <h2>Web Developer Intern @ Sahu Technology</h2>
+                <ul>
+                    <li><strong>Web Developer Intern at Sahu Technology</strong> – Developed and enhanced features for a blog application using Django.</li>
+                    <li><strong>Implemented Comment Like Feature</strong> – Added functionality for users to like comments, improving engagement and user interaction.</li>
+                    <li><strong>Collaborated with Development Team</strong> – Assisted in debugging, testing, and refining application features.</li>
+                </ul>
+                
+              </div> -->
+              <div class="details">
+                <h2>Bachelors of Engineering in Computer Science</h2>
+                <ul>
+                    <li>Bachelor of Technology in Computer Engineering from Terna Engineering college, Nerul (2019-2023).</li>
+                    <li>Achieved a CGPA of 8.4, reflecting strong academic performance.</li>
+                    <li>Covered subjects including Applied Data Science, Big Data, Data Structures and Algorithms, Machine Learning, and Database Management Systems.</li>
+                </ul>
+                
+              </div>
+              <div class="details">
+                <h2>Future Aspirations</h2>
+                <ul>
+                  <li>Continue pushing AI boundaries.</li>
+                  <li>Focus on ethical AI and bias reduction.</li>
+                  <li>Improve model efficiency and automation.</li>
+                </ul>
+              </div>
+            </div>
+        
+          </section>
+        
+          <script>
+            const historyItems = document.querySelectorAll('.history-item');
+            const details = document.querySelectorAll('.details');
+        
+            function updateHighlightContent(index) {
+              // Remove highlight class from all
+              historyItems.forEach(item => item.classList.remove('highlight'));
+              details.forEach(content => content.classList.remove('highlight-content'));
+        
+              // Add highlight class to the selected content & marker
+              historyItems[index].classList.add('highlight');
+              details[index].classList.add('highlight-content');
+            }
+        
+            historyItems.forEach((item, index) => {
+              item.addEventListener('click', () => updateHighlightContent(index));
+            });
+        
+          </script>
+    </div>
+
+    <div id="skills" class="page">
+        <div class="skills-container">
+            <h2 style="color: #ff5763;">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Programming</h3>
+                    <p>Python, PostgresSQL, PySpark</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Machine Learning</h3>
+                    <p>Pytorch, TensorFlow, Scikit Learn, LangChain, Llama-Index</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Databases</h3>
+                    <p>MongoDB, Milvus (Vector DB), Hive, Redis, MySQL</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Data Visualization</h3>
+                    <p>Prometheus, Grafana, , W&B, Tensorboard, Seaborn, Matplotlib, Plotly</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-light fa-globe"></i>
+                    <h3>Web Development</h3>
+                    <p>Streamlit, Gradio, Html, css, Js</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="projects" class="page">
+        <h1 style="color: #ff5763 ;margin-top:2rem">Featured Projects</h1>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Information Security Chatbot</h3>
+                    <p>A RAG based chatbot for the Security team powered by an on-prem LLM (Llama 3.3 70b), featuring semantic caching that cut LLM calls by 25%.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Safe AI Platform</h3>
+                    <p>An AI platform that decreased LLM security vulnerabilities by 30%, thereby significantly enhancing system reliability.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Prompt Injection Detection Suite</h3>
+                    <p>A fine-tuned model that produced over 10K adversarial prompts and detected 25% more vulnerabilities than previous solutions.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>PII Identification Suite</h3>
+                    <p>A solution with 100% test case validation for identifying PII, ensuring robust data privacy compliance and mitigating regulatory risks.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Recommendation System</h3>
+                    <p>An automated recommendation system that improved efficiency by 40%, resulting in enhanced relevance and a better user experience.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Semantic Prompt Router</h3>
+                    <p>An intelligent query routing mechanism that reduced response times by 4-5 seconds, increased resolution accuracy by 40%, and boosted query handling by 30%.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>HR Chatbot</h3>
+                    <p>A RAG-based HR solution integrating Redis as a vector database along with a dual recommendation engine and real-time autocomplete, reducing monthly queries by 30%.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Social Media Summarizer</h3>
+                    <p>An analytical tool that delivered sentiment insights to support strategic decision-making and enhance market positioning.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="page">
+        <h2>Get In Touch</h2>
+        <div class="contact-form">
+            <div class="form-group">
+                <input type="text" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Your Email">
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.style.display = 'none';
+            });
+        
+            // Show the selected page
+            document.getElementById(pageId).style.display = 'block';
+        }
+        
+        // Handle form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Message sent successfully!');
+        });
+        
+        // Initially show only the home section
+        document.addEventListener("DOMContentLoaded", function () {
+            showPage('home'); // Ensure the home page is visible on load
+        });
+        
+        
+    </script>
+    <!-- Add Chat Widget -->
+    <div class="chat-widget">
+        <button class="chat-toggle">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h3>Let's Chat!</h3>
+                <button class="close-chat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages">
+                <div class="message bot">
+                    Hi! I'm Prateek's portfolio assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message...">
+                <button>Send</button>
+            </div>
+        </div>
+    </div>
+    <script>
+
+     const API_KEY = "AIzaSyDjXcNPmShCW86N2Ex9N4qTuRjtVFYw3LM";
+const GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + API_KEY;
+
+const chatToggle = document.querySelector('.chat-toggle');
+const chatContainer = document.querySelector('.chat-container');
+const closeChat = document.querySelector('.close-chat');
+const chatInput = document.querySelector('.chat-input input');
+const chatSend = document.querySelector('.chat-input button');
+const chatMessages = document.querySelector('.chat-messages');
+
+chatToggle.addEventListener('click', () => {
+    chatContainer.style.display = 'flex';
+    chatToggle.style.display = 'none';
+});
+
+closeChat.addEventListener('click', () => {
+    chatContainer.style.display = 'none';
+    chatToggle.style.display = 'flex';
+});
+
+chatSend.addEventListener('click', sendMessage);
+chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+});
+
+async function sendMessage() {
+    const message = chatInput.value.trim();
+    if (!message) return;
+
+    addMessage('user', message);
+    chatInput.value = '';
+    
+    const SYSTEM_PROMPT = `<system_prompt>
+YOU ARE A PERSONAL AI REPRESENTATIVE FOR **Prateek Pathak**, AN ASSOCIATE DATA SCIENTIST CURRENTLY WORKING AT JIO PLATFORMS LTD. YOUR PURPOSE IS TO PROVIDE INFORMATION STRICTLY RELATED TO Prateek Pathak'S PROFESSIONAL BACKGROUND, SKILLS, EDUCATION, AND PROJECTS. ANY UNRELATED QUESTION MUST BE DENIED, BUT NOT WITH FIXED RESPONSES—INSTEAD, VARY YOUR REPLIES BASED ON CONTEXT.
+DO NOT LIE OR MENTION ANY OTHER ACHIVEMNETS THAN THE ONE GIVEN BELOW.
+### GREETINGS PROTOCOL
+- ALWAYS respond to greetings in a friendly and engaging manner.
+
+### Prateek Pathak - PROFESSIONAL SUMMARY
+Prateek Pathak is an **Associate Data Scientist at Jio Platforms Ltd.**, specializing in AI security, data science, and automation. He has successfully led multiple projects improving AI safety, efficiency, and reliability.
+
+### CONTACT INFORMATION
+- **Phone:** +91 8080654408
+- **Email:** prateekp1453@gmail.com
+- **LinkedIn:** [Prateek Pathak](https://www.linkedin.com/in/pathak-prateek/)
+
+### EXPERIENCE & PROJECTS  
+- **RAG Chatbot for Security Team**: Reduced LLM calls by 25% using semantic caching with Llama 3.3 70b.  
+- **Semantic Prompt Router**: Improved chatbot resolution accuracy by 40% and cut response time by 4-5 seconds.  
+- **Adversarial Prompt Generator**: Boosted success rate of adversarial prompts from 30% to 85% using a fine-tuned Mistral model.  
+- **PII Test Suite**: Detected sensitive data exposure with 89% accuracy, ensuring privacy compliance.  
+- **HR Query Chatbot**: Reduced monthly HR query volume by 30% with Redis vector DB and dual-tower architecture.  
+- **Prompt Injection Detection Suite**: Achieved 92% accuracy in detecting LLM vulnerabilities from adversarial inputs.  
+- **ML Workflow Optimization**: Reduced scheduling overhead by 30% and improved experiment tracking efficiency by 35% using Airflow and MLflow.  
+- **Customer Churn Prediction**: Improved F1-score by 12% and recall by 15% using XGBoost, SMOTE, and AWS Lambda deployment.  
+- **RAG-to-SQL Platform**: Enabled 60% faster SQL data access via LLM pipeline, improving query accuracy by 30% using Milvus.  
+
+### EDUCATION
+- **B. Tech in Computer Engineering** | Terna Engineering College | **CGPA: 8.4 (2019-2023)**
+
+### TECHNICAL SKILLS
+- **Programming:** Python  
+- **Databases:** SQL, Milvus (vector DB), Redis, MongoDB  
+- **Data Science:** TensorFlow, RAGs, LangChain, Llama Index, Scikit Learn, PySpark  
+- **Big Data & Cloud:** Hive, Airflow    
+
+### STRICT RULES FOR RESPONDING:
+1. **Always respond to greetings naturally and appropriately.**
+2. **ONLY** answer questions related to Prateek Pathak’s professional details, projects, skills, or education.
+3. **If asked an unrelated question, craft a unique sarcastic denial based on context, rather than repeating fixed phrases.** Examples:
+   - If someone asks about politics: _"Prateek’s too busy training models to train politicians."_
+   - If asked about cooking: _"Prateek can whip up a neural network, but a good curry? That’s another story."_
+4. **KEEP RESPONSES MINIMAL**—no unnecessary elaboration.
+</system_prompt>
+`;
+    
+  const requestBody = {
+        contents: [{ parts: [{ text: `${SYSTEM_PROMPT}\n\nUser Query: ${message}` }] }]
+    };
+    
+    try {
+        const response = await fetch(GEMINI_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestBody)
+        });
+        
+        const data = await response.json();
+        console.log("Gemini Response:", data);
+        
+        if (data && data.candidates && data.candidates.length > 0) {
+            addMessage('bot', data.candidates[0].content.parts[0].text);
+        } else {
+            addMessage('bot', "No valid response received.");
+        }
+    } catch (error) {
+        console.error("Error fetching response:", error);
+        addMessage('bot', "Error fetching response. Please try again.");
+    }
+}
+
+function addMessage(type, content) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', type);
+    messageDiv.textContent = content;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+</script>
+</body>
+</html>
